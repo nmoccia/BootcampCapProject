@@ -35,6 +35,20 @@ namespace BootcampCapstone.Controllers
                     ViewBag.Error = "Password is incorrect";
                     break;
                 case UserQueries.VerificationResult.Correct:
+
+                    var authTicket = new FormsAuthenticationTicket(
+                    1,                             // version
+                    lm.UserName,                      // user name
+                    DateTime.Now,                  // created
+                    DateTime.Now.AddMinutes(1),   // expires
+                    false,                    // persistent?
+                    "Moderator;Admin"                        // can be used to store roles
+                    );
+
+                     string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+
+                    var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                    System.Web.HttpContext.Current.Response.Cookies.Add(authCookie);
                     return RedirectToAction("Index", "User");
             }
             return View();

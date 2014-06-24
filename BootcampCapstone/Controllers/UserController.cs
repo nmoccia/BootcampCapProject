@@ -14,7 +14,7 @@ namespace BootcampCapstone.Controllers
 
         //
         // GET: /User/
-        
+        [Authorize]
         public ActionResult Index()
         {
             var users = db.Users.Include(u => u.Food);
