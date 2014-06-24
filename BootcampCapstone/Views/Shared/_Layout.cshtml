@@ -6,11 +6,28 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="../Assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../Assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../Assets/css/styles.css" rel="stylesheet">
+    <link href="../Assets/css/theming.css" rel="stylesheet">
 </head>
 <body>
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
+        <script src="../Assets/js/jquery.js"></script>
+        <script src="../Assets/js/bootstrap-transition.js"></script>
+        <script src="../Assets/js/bootstrap-alert.js"></script>
+        <script src="../Assets/js/bootstrap-modal.js"></script>
+        <script src="../Assets/js/bootstrap-dropdown.js"></script>
+        <script src="../Assets/js/bootstrap-scrollspy.js"></script>
+        <script src="../Assets/js/bootstrap-tab.js"></script>
+        <script src="../Assets/js/bootstrap-tooltip.js"></script>
+        <script src="../Assets/js/bootstrap-popover.js"></script>
+        <script src="../Assets/js/bootstrap-button.js"></script>
+        <script src="../Assets/js/bootstrap-collapse.js"></script>
+        <script src="../Assets/js/bootstrap-carousel.js"></script>
+        <script src="../Assets/js/bootstrap-typeahead.js"></script>
 </body>
 </html>

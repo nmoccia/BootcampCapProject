@@ -1,0 +1,39 @@
+/*================================CHANGE BTN COLOR FROM BLUE TO SOGETI ORANGE===================================*/
+.btn-primary {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #F56F3B;
+    *background-color: #F5443B;
+    background-image: -moz-linear-gradient(top, #F5883B, #F5443B);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F5883B), to(#F5443B));
+    background-image: -webkit-linear-gradient(top, #F5883B, #F5443B);
+    background-image: -o-linear-gradient(top, #F5883B, #F5443B);
+    background-image: linear-gradient(to bottom, #F5883B, #F5443B);
+    background-repeat: repeat-x;
+    border-color: #F5883B #F5883B #F52a3B;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.disabled,
+.btn-primary[disabled] {
+  color: #ffffff;
+  background-color: #F5443B;
+  *background-color: #F5443B;
+}
+
+.btn-primary:active,
+.btn-primary.active {
+  background-color: #F5332A;
+}
+
+/*================================CHANGE INPUT BOX GLOW FROM BLUE TO SOGETI YELLOW===================================*/
+textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {   
+    border-color: rgba(200, 200, 0, 0.8);
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(229, 103, 23, 0.6);
+    outline: 0 none;
+}

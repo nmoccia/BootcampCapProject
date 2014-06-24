@@ -5,34 +5,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Log In</h2>
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>Log in Form</legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(m => m.Password)
-            </li>
-            <li>
-                @Html.CheckBoxFor(m => m.RememberMe)
-                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
-                
-            </li>
-        </ol>
-        <input type="submit" value="Log in" />
-        <br />
-        @ViewBag.Error
-        @Html.ActionLink("Register", "Create", "User");
-    </fieldset>
-
+    <div class="container">
+        <fieldset class="form-signin">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <dl>
+                <dt>
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "input-block-level", @placeholder = "Email Address"})
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </dt>
+                <dt>
+                    @Html.PasswordFor(m => m.Password, new { @class = "input-block-level", @placeholder = "Password"})
+                    @Html.ValidationMessageFor(m => m.Password)
+                </dt>
+                <dt>
+                    @Html.CheckBoxFor(m => m.RememberMe, new { @class = "remember-me-cbx" })
+                    @Html.LabelFor(m => m.RememberMe, new { @class = "remember-me-lbl" })
+                </dt>
+            </dl>
+            <input type="submit" value="Log in" class="btn btn-large btn-primary" />
+        </fieldset>
+    </div> <!-- /container -->
 }
