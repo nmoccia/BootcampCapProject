@@ -112,6 +112,8 @@ namespace BootcampCapstone.Controllers
         //
         // POST: /Event/Delete/5
 
+        // Comment to test ability to commit and push easily
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
