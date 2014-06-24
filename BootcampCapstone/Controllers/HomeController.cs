@@ -15,6 +15,10 @@ namespace BootcampCapstone.Controllers
 
         public ActionResult Index()
         {
+            if (User.Identity.Name != "")
+            {
+                return RedirectToAction("Index", "Event");
+            }
             return View();
         }
 
@@ -40,18 +44,29 @@ namespace BootcampCapstone.Controllers
                     1,                             // version
                     lm.UserName,                      // user name
                     DateTime.Now,                  // created
-                    DateTime.Now.AddMinutes(1),   // expires
+                    DateTime.Now.AddMinutes(10),   // expires
                     false,                    // persistent?
                     "Moderator;Admin"                        // can be used to store roles
                     );
 
-                     string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
-
+                    string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
                     var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
                     System.Web.HttpContext.Current.Response.Cookies.Add(authCookie);
-                    return RedirectToAction("Index", "User");
+                    return RedirectToAction("Index", "Event");
             }
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Response.Cookies.Clear();
+            FormsAuthentication.SignOut();
+            HttpCookie c = new HttpCookie(User.Identity.Name);
+            c.Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies.Add(c);
+
+            Session.Clear();
+            return RedirectToAction("Index");
         }
 
     }

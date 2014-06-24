@@ -4,6 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    @if(User.Identity.Name != "")  
+    {
+        @Html.Raw("Hello, ")
+        @User.Identity.Name
+        <br />
+        @Html.ActionLink("Logout", "Logout", "Home")
+    }
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="../Assets/css/bootstrap.css" rel="stylesheet">
