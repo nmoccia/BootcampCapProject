@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BootcampCapstone.Queries;
+using System.Web.Security;
 
 namespace BootcampCapstone.Controllers
 {
@@ -16,6 +17,8 @@ namespace BootcampCapstone.Controllers
         {
             return View();
         }
+
+        //Login Function
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -32,7 +35,6 @@ namespace BootcampCapstone.Controllers
                     ViewBag.Error = "Password is incorrect";
                     break;
                 case UserQueries.VerificationResult.Correct:
-                    ViewBag.Error = "Correct!";
                     return RedirectToAction("Index", "User");
             }
             return View();
