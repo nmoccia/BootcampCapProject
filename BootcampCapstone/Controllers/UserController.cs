@@ -8,13 +8,14 @@ using System.Web.Mvc;
 
 namespace BootcampCapstone.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private EventManagerEntities db = new EventManagerEntities();
 
         //
         // GET: /User/
-        [Authorize]
+       
         public ActionResult Index()
         {
             var users = db.Users.Include(u => u.Food);
