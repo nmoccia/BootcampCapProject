@@ -1,0 +1,86 @@
+﻿@model BootcampCapstone.Event
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Event</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.startDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.startDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.endDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.endDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Category.category1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Category.category1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Type.type1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Type.type1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.eventDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.eventDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ownerID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ownerID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.logoPath)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.logoPath)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.location)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.location)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.eventStatus)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.eventStatus)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.eventID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

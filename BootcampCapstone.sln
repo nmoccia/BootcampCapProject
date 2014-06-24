@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootcampCapstone", "BootcampCapstone\BootcampCapstone.csproj", "{37BD437F-07E9-4952-8604-D74B8F9E3A78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootcampCapstone.Tests", "BootcampCapstone.Tests\BootcampCapstone.Tests.csproj", "{ABE71BE0-4C9B-4357-B9EA-AF1F6C3109B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37BD437F-07E9-4952-8604-D74B8F9E3A78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37BD437F-07E9-4952-8604-D74B8F9E3A78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37BD437F-07E9-4952-8604-D74B8F9E3A78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37BD437F-07E9-4952-8604-D74B8F9E3A78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABE71BE0-4C9B-4357-B9EA-AF1F6C3109B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABE71BE0-4C9B-4357-B9EA-AF1F6C3109B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABE71BE0-4C9B-4357-B9EA-AF1F6C3109B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABE71BE0-4C9B-4357-B9EA-AF1F6C3109B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

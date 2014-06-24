@@ -1,0 +1,159 @@
+﻿@model BootcampCapstone.User
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>User</legend>
+
+        @Html.HiddenFor(model => model.userID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.username)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.username)
+            @Html.ValidationMessageFor(model => model.username)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.password)
+            @Html.ValidationMessageFor(model => model.password)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.firstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.firstName)
+            @Html.ValidationMessageFor(model => model.firstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.lastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.lastName)
+            @Html.ValidationMessageFor(model => model.lastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.address1)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.address1)
+            @Html.ValidationMessageFor(model => model.address1)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.address2)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.address2)
+            @Html.ValidationMessageFor(model => model.address2)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.city)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.city)
+            @Html.ValidationMessageFor(model => model.city)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.state)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.state)
+            @Html.ValidationMessageFor(model => model.state)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.zip)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.zip)
+            @Html.ValidationMessageFor(model => model.zip)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.phoneHome)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.phoneHome)
+            @Html.ValidationMessageFor(model => model.phoneHome)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.phoneCell)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.phoneCell)
+            @Html.ValidationMessageFor(model => model.phoneCell)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.phoneOffice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.phoneOffice)
+            @Html.ValidationMessageFor(model => model.phoneOffice)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.companyName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.companyName)
+            @Html.ValidationMessageFor(model => model.companyName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.branchLocation)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.branchLocation)
+            @Html.ValidationMessageFor(model => model.branchLocation)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.foodID, "Food")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("foodID", String.Empty)
+            @Html.ValidationMessageFor(model => model.foodID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.additionalInfo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.additionalInfo)
+            @Html.ValidationMessageFor(model => model.additionalInfo)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
