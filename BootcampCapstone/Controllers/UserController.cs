@@ -49,12 +49,8 @@ namespace BootcampCapstone.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(User user)
-        {
-            if (db.Users.FirstOrDefault(m => m.username.ToUpper() == user.username.ToUpper()) == null)
-            {
-                
-            }
-            else if (ModelState.IsValid)
+        {            
+            if (ModelState.IsValid)
             {
                 db.Users.Add(user);
                 db.SaveChanges();
