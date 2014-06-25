@@ -1,46 +1,50 @@
-﻿@model IEnumerable<BootcampCapstone.Event>
+﻿@model PagedList.IPagedList<BootcampCapstone.Event>
+@using PagedList.Mvc; 
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Events";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Events</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "Event", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)  
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.title)
+            @Html.ActionLink("Title", "Index", new {sortOrder = ViewBag.TitleParam})
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.startDate)
+            @Html.ActionLink("Start Date", "Index", new {sortOrder = ViewBag.StartDateParam})
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.endDate)
+            @Html.ActionLink("End Date", "Index")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Category.category1)
+            @Html.ActionLink("Category", "Index")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Type.type1)
+            @Html.ActionLink("Type", "Index")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.eventDescription)
+            @Html.ActionLink("Description", "Index")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ownerID)
+            @Html.ActionLink("Location", "Index")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.logoPath)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.eventStatus)
+            @Html.ActionLink("Status", "Index")
         </th>
         <th></th>
     </tr>
@@ -66,12 +70,6 @@
             @Html.DisplayFor(modelItem => item.eventDescription)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ownerID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.logoPath)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.location)
         </td>
         <td>
@@ -84,5 +82,8 @@
         </td>
     </tr>
 }
-
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager( Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter }) )

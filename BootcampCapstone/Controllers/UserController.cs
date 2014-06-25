@@ -8,14 +8,13 @@ using System.Web.Mvc;
 
 namespace BootcampCapstone.Controllers
 {
-    [Authorize]
     public class UserController : Controller
     {
         private EventManagerEntities db = new EventManagerEntities();
 
         //
         // GET: /User/
-       
+       [Authorize]
         public ActionResult Index()
         {
             var users = db.Users.Include(u => u.Food);
@@ -24,7 +23,7 @@ namespace BootcampCapstone.Controllers
 
         //
         // GET: /User/Details/5
-
+        [Authorize]
         public ActionResult Details(int id = 0)
         {
             User user = db.Users.Find(id);
@@ -67,14 +66,14 @@ namespace BootcampCapstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogIn(BootcampCapstone.Models.AccountModel.LogInModel lm)
         {
-            throw new Exception("HERHERHERHEREHR");
+           
             return View(lm);
         }
 
 
         //
         // GET: /User/Edit/5
-
+        [Authorize]
         public ActionResult Edit(int id = 0)
         {
             User user = db.Users.Find(id);
@@ -91,6 +90,7 @@ namespace BootcampCapstone.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit(User user)
         {
             if (ModelState.IsValid)
@@ -105,7 +105,7 @@ namespace BootcampCapstone.Controllers
 
         //
         // GET: /User/Delete/5
-
+        [Authorize]
         public ActionResult Delete(int id = 0)
         {
             User user = db.Users.Find(id);
@@ -121,6 +121,7 @@ namespace BootcampCapstone.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             User user = db.Users.Find(id);
