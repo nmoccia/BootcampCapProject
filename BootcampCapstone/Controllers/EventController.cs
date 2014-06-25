@@ -5,20 +5,85 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace BootcampCapstone.Controllers
 {
     public class EventController : Controller
     {
+
+        public EventController()
+        {
+
+        }
+        public EventController(BootcampCapstone.Queries.IEventQueries eventQueries)
+        {
+            _eventQueries = eventQueries;
+        }
+
         private EventManagerEntities db = new EventManagerEntities();
 
         //
         // GET: /Event/
-        
-        public ActionResult Index()
+
+        public ActionResult Index(string sortOrder, string searchString)
         {
-            var events = db.Events.Include(e => e.Category).Include(e => e.Type);
+
+            ViewBag.TitleParam = String.IsNullOrEmpty(sortOrder) ? "Title_desc" : "";
+            ViewBag.StartDateParam = sortOrder == "Date" ? "Date_desc" : "Date";
+            var events = from s in db.Events select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                events = events.Where(i => i.title.ToUpper().Contains(searchString)
+                            || i.location.ToUpper().Contains(searchString)
+                            || i.eventDescription.ToUpper().Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "Title_desc":
+                    events = events.OrderByDescending(s => s.title);
+                    break;
+                case "Date":
+                    events = events.OrderBy(s => s.startDate);
+                    break;
+                case "Date_desc":
+                    events = events.OrderByDescending(s => s.startDate);
+                    break;
+                default:
+                    events = events.OrderBy(s => s.title);
+                    break;
+            }
             return View(events.ToList());
+            /*
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.TitleParam = String.IsNullOrEmpty(sortOrder) ? TitleDescendingText : string.Empty;
+            _eventQueries = new BootcampCapstone.Queries.EventQueries();
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            int pageSize = 3;
+            var pageIndex = (page ?? 1);
+
+            IPagedList<Event> events = new PagedList<Event>(new List<Event>(), 1, 1);
+           
+            try
+            {
+                events = _eventQueries.GetEvents(pageIndex, pageSize, sortOrder, searchString);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "An Error occurred " + ex.Message);
+            }
+            return View("Index", events);
+             * */
         }
 
         //
@@ -123,11 +188,14 @@ namespace BootcampCapstone.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        /*
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
             base.Dispose(disposing);
         }
+        */
+        private BootcampCapstone.Queries.IEventQueries _eventQueries;
+        public const string TitleDescendingText = "title_desc";
     }
 }
