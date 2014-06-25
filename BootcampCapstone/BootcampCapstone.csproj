@@ -199,8 +199,6 @@
     <Content Include="Assets\css\theming.css" />
     <Content Include="Assets\img\glyphicons-halflings-white.png" />
     <Content Include="Assets\img\glyphicons-halflings.png" />
-    <Content Include="Assets\img\sogeti-logo-rounded.png" />
-    <Content Include="Assets\img\world-dotted.jpg" />
     <Content Include="Assets\js\bootstrap.js" />
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\jquery-1.10.2.js" />
@@ -289,6 +287,8 @@
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="img\glyphicons-halflings-white.png" />
     <Content Include="img\glyphicons-halflings.png" />
+    <Content Include="img\sogeti-logo-rounded.png" />
+    <Content Include="img\world-dotted.jpg" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
