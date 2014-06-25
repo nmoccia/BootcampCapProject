@@ -14,7 +14,7 @@ namespace BootcampCapstone.Controllers
 
         //
         // GET: /Event/
-
+        
         public ActionResult Index()
         {
             var events = db.Events.Include(e => e.Category).Include(e => e.Type);

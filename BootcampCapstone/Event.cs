@@ -11,7 +11,7 @@ namespace BootcampCapstone
 {
     using System;
     using System.Collections.Generic;
-    
+    [System.ComponentModel.DataAnnotations.MetadataType(typeof(EventMetaData))]
     public partial class Event
     {
         public Event()

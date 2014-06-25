@@ -8,13 +8,14 @@ using System.Web.Mvc;
 
 namespace BootcampCapstone.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private EventManagerEntities db = new EventManagerEntities();
 
         //
         // GET: /User/
-        
+       
         public ActionResult Index()
         {
             var users = db.Users.Include(u => u.Food);
@@ -49,7 +50,7 @@ namespace BootcampCapstone.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(User user)
-        {
+        {            
             if (ModelState.IsValid)
             {
                 db.Users.Add(user);

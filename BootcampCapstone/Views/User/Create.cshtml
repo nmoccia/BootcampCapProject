@@ -87,7 +87,7 @@
                         @Html.ValidationMessageFor(model => model.zip)
                     </div>
                 </div>
-            </fieldset>
+            </fieldset> <!-- form-register-column -->
             <fieldset class ="form-register-column">
                 <div class="form-line">
                     @Html.LabelFor(model => model.phoneHome)
@@ -154,7 +154,7 @@
                 </div>
                 <input type="submit" value="Submit" class="btn btn-large btn-primary right-spacing-small" />
                 <input type="button" value="Cancel" class="btn btn-large btn-primary" onclick="@("location.href='" + Url.Action("Index", "Home") + "'")" />
-            </fieldset>
+            </fieldset> <!-- form-register-column -->
         </div> <!-- /form-register -->
     </div> <!-- container -->
 }
@@ -163,8 +163,13 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+<<<<<<< HEAD
 <div class="hidden">
     @Html.ActionLink("Back to Log In", "Index", "Home")
+=======
+<div>
+    @Html.ActionLink("Cancel", "Index", "Home")
+>>>>>>> 963bdd42fd90f456d4261cd1f9a5c7c5c55051c9
 </div>
 
 @section Scripts {
