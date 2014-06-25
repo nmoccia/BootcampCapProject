@@ -5,149 +5,158 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
-
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>User</legend>
-
-        @Html.HiddenFor(model => model.userID)
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.username)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.username)
-            @Html.ValidationMessageFor(model => model.username)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.password)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.password)
-            @Html.ValidationMessageFor(model => model.password)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.firstName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.firstName)
-            @Html.ValidationMessageFor(model => model.firstName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.lastName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.lastName)
-            @Html.ValidationMessageFor(model => model.lastName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.address1)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.address1)
-            @Html.ValidationMessageFor(model => model.address1)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.address2)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.address2)
-            @Html.ValidationMessageFor(model => model.address2)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.city)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.city)
-            @Html.ValidationMessageFor(model => model.city)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.state)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.state)
-            @Html.ValidationMessageFor(model => model.state)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.zip)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.zip)
-            @Html.ValidationMessageFor(model => model.zip)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.phoneHome)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.phoneHome)
-            @Html.ValidationMessageFor(model => model.phoneHome)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.phoneCell)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.phoneCell)
-            @Html.ValidationMessageFor(model => model.phoneCell)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.phoneOffice)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.phoneOffice)
-            @Html.ValidationMessageFor(model => model.phoneOffice)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.companyName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.companyName)
-            @Html.ValidationMessageFor(model => model.companyName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.branchLocation)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.branchLocation)
-            @Html.ValidationMessageFor(model => model.branchLocation)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.foodID, "Food")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("foodID", String.Empty)
-            @Html.ValidationMessageFor(model => model.foodID)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.additionalInfo)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.additionalInfo)
-            @Html.ValidationMessageFor(model => model.additionalInfo)
-        </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
+    <div class="container centered">
+        <div class="form-register">
+            <h2 class="form-register-heading">Edit Account Info</h2>
+            <fieldset class="form-register-column">
+                @Html.HiddenFor(model => model.userID)
+                <div class="form-line">
+                    @Html.LabelFor(model => model.username)
+                </div>
+                <div class="form-line">
+                    @Html.EditorFor(model => model.username)
+                </div>
+                <div class="form-line">
+                    @Html.ValidationMessageFor(model => model.username)
+                </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.password)
+                </div>
+                <div class="form-line">
+                    @Html.PasswordFor(model => model.password)
+                </div>
+                <div class="form-line">
+                    @Html.ValidationMessageFor(model => model.password)
+                </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.firstName)
+                </div>
+                <div class="form-line">
+                    @Html.EditorFor(model => model.firstName)
+                </div>
+                <div class="form-line">
+                    @Html.ValidationMessageFor(model => model.firstName)
+                </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.lastName)
+                </div>
+                <div class="form-line">
+                    @Html.EditorFor(model => model.lastName)
+                </div>
+                <div class="form-line">
+                    @Html.ValidationMessageFor(model => model.lastName)
+                </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.address1)
+                </div>
+                <div class="form-line">
+                    @Html.EditorFor(model => model.address1)
+                </div>
+                <div class="form-line">
+                    @Html.ValidationMessageFor(model => model.address1)
+                </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.address2)
+                </div>
+                <div class="form-line">
+                    @Html.EditorFor(model => model.address2)
+                </div>
+                <div class="form-line">
+                    @Html.ValidationMessageFor(model => model.address2)
+                </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.city)
+                </div>
+                <div class="form-line">
+                    @Html.EditorFor(model => model.city)
+                </div>
+                <div class="form-line">
+                    @Html.ValidationMessageFor(model => model.city)
+                </div>
+                <div class="form-line">
+                    <div class="form-line-double-left">
+                        @Html.LabelFor(model => model.state)
+                        @Html.EditorFor(model => model.state)
+                        @Html.ValidationMessageFor(model => model.state)
+                    </div>
+                    <div class="form-line-double-right">
+                        @Html.LabelFor(model => model.zip)
+                        @Html.EditorFor(model => model.zip)
+                        @Html.ValidationMessageFor(model => model.zip)
+                    </div>
+                </div>
+            </fieldset> <!-- form-register-column -->
+            <fieldset class ="form-register-column">
+                <div class="form-line">
+                    @Html.LabelFor(model => model.phoneHome)
+                </div>
+                <div class="form-line">
+                    @Html.EditorFor(model => model.phoneHome)
+                </div>
+                <div class="form-line">
+                    @Html.ValidationMessageFor(model => model.phoneHome)
+                </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.phoneCell)
+                </div>
+                <div class="form-line">
+                    @Html.EditorFor(model => model.phoneCell)
+                </div>
+                <div class="form-line">
+                    @Html.ValidationMessageFor(model => model.phoneCell)
+                </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.phoneOffice)
+                </div>
+                <div class="form-line">
+                    @Html.EditorFor(model => model.phoneOffice)
+                </div>
+                <div class="form-line">
+                    @Html.ValidationMessageFor(model => model.phoneOffice)
+                </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.companyName)
+                </div>
+                <div class="form-line">
+                    @Html.EditorFor(model => model.companyName)
+                </div>
+                <div class="form-line">
+                    @Html.ValidationMessageFor(model => model.companyName)
+                </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.branchLocation)
+                </div>
+                <div class="form-line">
+                    @Html.EditorFor(model => model.branchLocation)
+                </div>
+                <div class="form-line">
+                    @Html.ValidationMessageFor(model => model.branchLocation)
+                </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.foodID, "Food")
+                </div>
+                <div class="form-line">
+                    @Html.DropDownList("foodID", String.Empty)
+                </div>
+                <div class="form-line">
+                    @Html.ValidationMessageFor(model => model.foodID)
+                </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.additionalInfo)
+                </div>
+                <div class="form-line">
+                    @Html.TextAreaFor(model => model.additionalInfo, new { @rows = "2" })
+                </div>
+                <div class="form-line">
+                    @Html.ValidationMessageFor(model => model.additionalInfo)
+                </div>
+                <input type="submit" value="Save" class="btn btn-large btn-primary right-spacing-small" />
+            </fieldset> <!-- form-register-column -->
+        </div> <!-- /form-register -->
+    </div> <!-- container -->
 }
 
 <div>
