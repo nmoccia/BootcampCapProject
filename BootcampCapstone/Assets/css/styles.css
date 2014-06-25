@@ -35,3 +35,86 @@ body {
     display:inline-block;
     padding-left:5px;
 }
+
+.form-register-container {
+}
+.form-register {
+    max-width:600px;
+    padding:19px 29px 29px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+            border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+        -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+            box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    text-align:center;
+}
+.form-register .form-register-heading,
+.form-register .checkbox {
+    margin-bottom: 10px;
+}
+    .form-register input[type="text"],
+    .form-register input[type="email"],
+    .form-register input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 5px;
+        padding: 7px 9px;
+    }
+.form-register-column {
+    display:inline-block;
+    max-width:300px;
+    vertical-align:top;
+    margin:0px 15px 0px 15px;
+}
+
+.form-line {
+    display:block;
+    text-align:left;
+}
+    .form-line label {
+        display:inline-block;
+    }
+    .form-line textarea {
+        max-width:250px;
+    }
+.form-line-double-left {
+    padding-right:20px;
+    display:inline-block;
+}
+    .form-line-double-left input[type="text"] {
+        width:80px;
+    }
+    .form-line-double-left label {
+        display:block;
+    }
+.form-line-double-right {
+    display:inline-block;
+}
+    .form-line-double-right input[type="text"] {
+        width:80px;
+    }
+    .form-line-double-right label {
+        display:block;
+    }
+
+.centered {
+    text-align:center;
+}
+
+.right-spacing-small {
+    margin-right:12px;
+}
+.btn-left {
+    float:left;
+    margin-left:20px;
+    width:100px !important;
+}
+.btn-right {
+    float:right;
+    margin-right:20px;
+    width:100px !important;
+}

@@ -25,11 +25,8 @@
                     @Html.LabelFor(m => m.RememberMe, new { @class = "remember-me-lbl" })
                 </dt>
             </dl>
-            <input type="submit" value="Log in" class="btn btn-large btn-primary" />
-            <div>
-                <br />
-                @Html.ActionLink("Register", "Create", "User")
-            </div> 
+            <input type="submit" value="Log In" class="btn btn-large btn-primary btn-left" />
+            <input type="button" value="Register" class="btn btn-large btn-primary btn-right" onclick="@("location.href='" + Url.Action("Create", "User") + "'")" />
         </fieldset>
     </div> <!-- /container -->
 }
