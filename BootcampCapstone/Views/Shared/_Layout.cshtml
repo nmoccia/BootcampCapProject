@@ -21,20 +21,11 @@
 <body>
     @RenderBody()
 
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
-        <script src="../Assets/js/jquery.js"></script>
-        <script src="../Assets/js/bootstrap-transition.js"></script>
-        <script src="../Assets/js/bootstrap-alert.js"></script>
-        <script src="../Assets/js/bootstrap-modal.js"></script>
-        <script src="../Assets/js/bootstrap-dropdown.js"></script>
-        <script src="../Assets/js/bootstrap-scrollspy.js"></script>
-        <script src="../Assets/js/bootstrap-tab.js"></script>
-        <script src="../Assets/js/bootstrap-tooltip.js"></script>
-        <script src="../Assets/js/bootstrap-popover.js"></script>
-        <script src="../Assets/js/bootstrap-button.js"></script>
-        <script src="../Assets/js/bootstrap-collapse.js"></script>
-        <script src="../Assets/js/bootstrap-carousel.js"></script>
-        <script src="../Assets/js/bootstrap-typeahead.js"></script>
+   
+        <script src="../Assets/js/jquery-1.10.2.js"></script>
+        <script src="../Assets/js/jquery-ui-1.10.4.custom.js"></script>
+        <script src="../Assets/js/jquery-ui-1.10.4.custom.min.js"></script>
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -77,5 +77,24 @@ namespace BootcampCapstone
         [Display(Name = "Additional Information")]
         public string additionalInfo;
     }
+
+    internal sealed class EventMetaData
+    {
+
+        public int eventID;
+        public string title;
+        [DataType(DataType.DateTime, ErrorMessage = "Please enter a valid date in the format dd/mm/yyyy hh:mm")]
+        public Nullable<System.DateTime> startDate;
+
+        [DataType(DataType.DateTime, ErrorMessage = "Please enter a valid date in the format dd/mm/yyyy hh:mm")]
+        public Nullable<System.DateTime> endDate;
+        public Nullable<int> categoryID;
+        public Nullable<int> typeID;
+        public string eventDescription;
+        public Nullable<int> ownerID;
+        public string logoPath;
+        public string location;
+        public string eventStatus;
+    }
     
 }
