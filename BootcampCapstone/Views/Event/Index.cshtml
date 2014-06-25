@@ -1,22 +1,23 @@
-﻿@model IEnumerable<BootcampCapstone.Event>
-
+﻿@model PagedList.IPagedList<BootcampCapstone.Event>
+@using PagedList.Mvc; 
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Events";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Events</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Index", "Event", FormMethod.Get))
 {
     <p>
-        Find by name: @Html.TextBox("SearchString")  
-        <input type="submit" value="Search" /></p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)  
+        <input type="submit" value="Search" />
+    </p>
 }
 
 <table>
@@ -83,3 +84,6 @@
 }
 </table>
 <br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager( Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter=ViewBag.CurrentFilter }) )

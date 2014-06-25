@@ -26,11 +26,23 @@ namespace BootcampCapstone.Controllers
         //
         // GET: /Event/
 
-        public ActionResult Index(string sortOrder, string searchString)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-
+            ViewBag.CurrentSort = sortOrder;
             ViewBag.TitleParam = String.IsNullOrEmpty(sortOrder) ? "Title_desc" : "";
             ViewBag.StartDateParam = sortOrder == "Date" ? "Date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
             var events = from s in db.Events select s;
 
             if (!String.IsNullOrEmpty(searchString))
@@ -55,35 +67,10 @@ namespace BootcampCapstone.Controllers
                     events = events.OrderBy(s => s.title);
                     break;
             }
-            return View(events.ToList());
-            /*
-            ViewBag.CurrentSort = sortOrder;
-            ViewBag.TitleParam = String.IsNullOrEmpty(sortOrder) ? TitleDescendingText : string.Empty;
-            _eventQueries = new BootcampCapstone.Queries.EventQueries();
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
 
             int pageSize = 3;
-            var pageIndex = (page ?? 1);
-
-            IPagedList<Event> events = new PagedList<Event>(new List<Event>(), 1, 1);
-           
-            try
-            {
-                events = _eventQueries.GetEvents(pageIndex, pageSize, sortOrder, searchString);
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", "An Error occurred " + ex.Message);
-            }
-            return View("Index", events);
-             * */
+            int pageNumber = (page ?? 1);
+            return View(events.ToPagedList(pageNumber, pageSize));
         }
 
         //
