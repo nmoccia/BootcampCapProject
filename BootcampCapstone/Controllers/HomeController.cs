@@ -57,6 +57,19 @@ namespace BootcampCapstone.Controllers
             return View();
         }
 
+        public ActionResult LostPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LostPassword(BootcampCapstone.Models.AccountModel.LostPasswordModel lostPassModel)
+        {
+            string enteredUsername = lostPassModel.UserName;
+            return View();
+        }
+
         public ActionResult Logout()
         {
             Response.Cookies.Clear();

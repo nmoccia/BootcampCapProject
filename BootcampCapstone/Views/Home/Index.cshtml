@@ -25,8 +25,13 @@
                     @Html.LabelFor(m => m.RememberMe, new { @class = "remember-me-lbl" })
                 </dt>
             </dl>
-            <input type="submit" value="Log In" class="btn btn-large btn-primary btn-left" />
+            <input type="submit" value="Log in" class="btn btn-large btn-primary" />
             <input type="button" value="Register" class="btn btn-large btn-primary btn-right" onclick="@("location.href='" + Url.Action("Create", "User") + "'")" />
-        </fieldset> <!-- form-signin -->
+            <div>
+                <br />
+                @Html.ActionLink("Forgot Your Password?", "LostPassword")
+            </div>
+        </fieldset>        
+         <!-- form-signin -->         
     </div> <!-- /container -->
 }
