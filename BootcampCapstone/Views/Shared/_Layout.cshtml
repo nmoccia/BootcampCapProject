@@ -18,10 +18,11 @@
     <link href="../Assets/css/styles.css" rel="stylesheet">
     <link href="../Assets/css/theming.css" rel="stylesheet">
 </head>
-<body>
-    @RenderBody()
+<body id="main">
+    <header id="head"></header> <!-- The Sogeti Banner (check theming CSS) -->
 
-   
+        <!-- the content -->
+        @RenderBody()
         <script src="../Assets/js/jquery-1.10.2.js"></script>
         <script src="../Assets/js/jquery-ui-1.10.4.custom.js"></script>
         <script src="../Assets/js/jquery-ui-1.10.4.custom.min.js"></script>

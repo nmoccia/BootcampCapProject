@@ -26,12 +26,12 @@
                 </dt>
             </dl>
             <input type="submit" value="Log in" class="btn btn-large btn-primary" />
+            <input type="button" value="Register" class="btn btn-large btn-primary btn-right" onclick="@("location.href='" + Url.Action("Create", "User") + "'")" />
             <div>
                 <br />
-                @Html.ActionLink("Register", "Create", "User")
-                <br />
                 @Html.ActionLink("Forgot Your Password?", "LostPassword")
-            </div> 
-        </fieldset>
+            </div>
+        </fieldset>        
+         <!-- form-signin -->         
     </div> <!-- /container -->
 }
