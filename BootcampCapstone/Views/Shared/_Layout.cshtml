@@ -21,12 +21,22 @@
 <body id="main">
     <header id="head"></header> <!-- The Sogeti Banner (check theming CSS) -->
 
-        <!-- the content -->
+    <!-- the content -->
+    <div id="wrap">
         @RenderBody()
         <script src="../Assets/js/jquery-1.10.2.js"></script>
         <script src="../Assets/js/jquery-ui-1.10.4.custom.js"></script>
         <script src="../Assets/js/jquery-ui-1.10.4.custom.min.js"></script>
         @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
+        <div id="push"></div>
+    </div>
+
+    <!-- Copyright Footer -->
+    <div id="footer">
+        <div class="container">
+            <p class="muted credit">&copy; Copyright @DateTime.Now.Year - Sogeti</p>
+        </div>
+    </div>
 </body>
 </html>
