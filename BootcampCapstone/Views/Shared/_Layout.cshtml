@@ -4,13 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @if(User.Identity.Name != "")  
-    {
-        @Html.Raw("Hello, ")
-        @User.Identity.Name
-        <br />
-        @Html.ActionLink("Logout", "Logout", "Home")
-    }
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="../Assets/css/bootstrap.css" rel="stylesheet">
@@ -19,24 +12,49 @@
     <link href="../Assets/css/theming.css" rel="stylesheet">
 </head>
 <body id="main">
-    <header id="head"></header> <!-- The Sogeti Banner (check theming CSS) -->
-
-    <!-- the content -->
     <div id="wrap">
-        @RenderBody()
-        <script src="../Assets/js/jquery-1.10.2.js"></script>
-        <script src="../Assets/js/jquery-ui-1.10.4.custom.js"></script>
-        <script src="../Assets/js/jquery-ui-1.10.4.custom.min.js"></script>
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
+        <header>
+            <div id="head"></div> <!-- The Sogeti Banner (check theming CSS) -->
+            <div id="user-info">
+                @if(User.Identity.Name != "")  
+                {
+                    @Html.Raw("Hello, ")
+                    @User.Identity.Name
+                    <br />
+                    @Html.ActionLink("Logout", "Logout", "Home")
+                }
+            </div>
+        </header>
+        @if (!String.IsNullOrEmpty(User.Identity.Name)) {
+            <div class="sidebar span3">
+                <div class="well sidebar-nav">
+                    <ul class="nav nav-list">
+                        <li class="active"><a href="#">My Events</a></li>
+                        <li><a href="#">Create Event</a></li>
+                        <li><a href="#">Find Event</a></li>
+                        <li><a href="#">Account</a></li>
+                    </ul>
+                </div><!--/.well -->
+            </div><!--/span-->
+        }
+
+        <!-- the content -->
+            @RenderBody()
+            <script src="../Assets/js/jquery-1.10.2.js"></script>
+            <script src="../Assets/js/jquery-ui-1.10.4.custom.js"></script>
+            <script src="../Assets/js/jquery-ui-1.10.4.custom.min.js"></script>
+            @Scripts.Render("~/bundles/jquery")
+            @RenderSection("scripts", required: false)
         <div id="push"></div>
     </div>
 
     <!-- Copyright Footer -->
-    <div id="footer">
-        <div class="container">
-            <p class="muted credit">&copy; Copyright @DateTime.Now.Year - Sogeti</p>
+    <footer>
+        <div id="footer">
+            <div class="container">
+                <p class="muted credit">&copy; Copyright @DateTime.Now.Year - Sogeti</p>
+            </div>
         </div>
-    </div>
+    </footer>
 </body>
 </html>
