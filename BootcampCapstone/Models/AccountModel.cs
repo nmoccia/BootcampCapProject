@@ -57,5 +57,12 @@ namespace BootcampCapstone.Models
             public bool RememberMe { get; set; }
         }
 
+        public class LostPasswordModel
+        {
+            [Required]
+            [Display(Name = "User Name")]
+            public string UserName { get; set; }
+        }
+
     }
 }
