@@ -8,18 +8,6 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-if (!String.IsNullOrEmpty(User.Identity.Name)) {
-    <div class="sidebar span3">
-        <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-                <li>@Html.ActionLink("My Events", "MyEvents", "Event")</li>
-                <li>@Html.ActionLink("Create Event", "Create", "Event")</li>
-                <li>@Html.ActionLink("Find Events", "Index", "Event")</li>
-                <li class="active">@Html.ActionLink("My Account", "MyAccount", "User")</li>
-            </ul>
-        </div><!--/.well -->
-    </div><!--/span-->
-}
 <div class="container centered">
     <div class="form-generic">
         <div id="buttons">

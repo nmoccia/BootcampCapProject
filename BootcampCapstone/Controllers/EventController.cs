@@ -35,6 +35,7 @@ namespace BootcampCapstone.Controllers
             ViewBag.TitleParam = String.IsNullOrEmpty(sortOrder) ? "Title_desc" : "";
             ViewBag.StartDateParam = sortOrder == "Date" ? "Date_desc" : "Date";
             ViewBag.EndDateParam = sortOrder == "EndDate" ? "EndDate_desc" : "EndDate";
+            TempData["CurrentPage"] = myEvents == "true" ? "MyEvents" : "FindEvents";
 
             // Database elements
             var userId = (from i in db.Users.Where(i => i.username == User.Identity.Name) select i.userID).First();
@@ -57,7 +58,8 @@ namespace BootcampCapstone.Controllers
 
 
             if (myEvents == "true")
-                events = events.Where(i => eventIds.Contains(i.eventID));    
+                events = events.Where(i => eventIds.Contains(i.eventID));
+            
             if (!String.IsNullOrEmpty(searchString))
             {
                 events = events.Where(i => i.title.ToUpper().Contains(searchString)
@@ -150,6 +152,7 @@ namespace BootcampCapstone.Controllers
 
         public ActionResult Create()
         {
+            TempData["CurrentPage"] = "CreateEvent";
             ViewBag.categoryID = new SelectList(db.Categories, "categoryID", "category1");
             ViewBag.typeID = new SelectList(db.Types, "typeID", "type1");
             return View();
