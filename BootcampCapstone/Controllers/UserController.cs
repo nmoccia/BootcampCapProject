@@ -22,6 +22,15 @@ namespace BootcampCapstone.Controllers
             return View(users.ToList());
         }
 
+       [Authorize]
+       public ActionResult MyAccount()
+       {
+
+           var userId = db.Users.Where(i => i.username.ToUpper() == User.Identity.Name.ToUpper()).Select(j => j.userID).FirstOrDefault();
+
+           return RedirectToAction("Details", new { id = userId });
+       }
+
         //
         // GET: /User/Details/5
         [Authorize]
