@@ -135,7 +135,8 @@
             <div class="grower">
                 @using (Html.BeginForm()) {
                     @Html.AntiForgeryToken()
-                    <input type="button" value="Delete" class="btn btn-large btn-primary" />
+                    <input type="submit" value="Delete" class="btn btn-large btn-primary right-spacing-small" />
+                    <input type="button" value="Cancel" class="btn btn-large btn-primary" onclick="@("location.href='" + Url.Action("Details", "User", new { id = Model.userID }) + "'")" />
                 }
             </div>
         </fieldset> <!-- form-generic-column -->

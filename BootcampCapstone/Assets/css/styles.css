@@ -134,7 +134,10 @@ body {
     margin-right:20px;
     width:100px !important;
 }
-
+#buttons {
+    float:left;
+    display:inline-block;
+}
 /*========================================STICKY FOOTER CSS================================*/
 #wrap {
     min-height: 100%;

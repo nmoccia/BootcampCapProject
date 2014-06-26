@@ -22,8 +22,10 @@ if (!String.IsNullOrEmpty(User.Identity.Name)) {
 }
 <div class="container centered">
     <div class="form-generic">
-        <input type="button" value="Edit" class="btn btn-large btn-primary btn-left" onclick="@("location.href='" + Url.Action("Edit", "User", new { id = Model.userID }) + "'")" />
-        <input type="button" value="Delete" class="btn btn-large btn-primary btn-right" onclick="@("location.href='" + Url.Action("Delete", "User", new { id = Model.userID }) + "'")" />
+        <div id="buttons">
+            <input type="button" value="Edit" class="btn btn-large btn-primary right-spacing-small" onclick="@("location.href='" + Url.Action("Edit", "User", new { id = Model.userID }) + "'")" />
+            <input type="button" value="Delete" class="btn btn-large btn-primary" onclick="@("location.href='" + Url.Action("Delete", "User", new { id = Model.userID }) + "'")" />
+        </div>
         <h2 class="form-generic-heading">Your Account Info</h2>
         <fieldset class="form-generic-column">
             <div class="form-line">
@@ -143,10 +145,10 @@ if (!String.IsNullOrEmpty(User.Identity.Name)) {
     </div> <!-- /form-generic -->
 </div> <!-- container -->
 }
-<p>
+<div class="hidden">
     @Html.ActionLink("Edit", "Edit", new { id = Model.userID }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

@@ -4,102 +4,114 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    if (!String.IsNullOrEmpty(User.Identity.Name)) {
+        <div class="sidebar span3">
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li>@Html.ActionLink("My Events", "MyEvents", "Event")</li>
+                    <li class="active">@Html.ActionLink("Create Event", "Create", "Event")</li>
+                    <li>@Html.ActionLink("Find Events", "Index", "Event")</li>
+                    <li>@Html.ActionLink("My Account", "MyAccount", "User")</li>
+                </ul> <!-- /.nav -->
+            </div><!--/.well -->
+        </div><!--/span-->
+    }
 <h2>Edit</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Event</legend>
+    <div class="container centered">
+        <div class="form-generic">
+            <h2 class="form-generic-heading">Edit Event</h2>
+            <fieldset class ="form-generic-column">
+                @Html.HiddenFor(model => model.eventID)
+                <div class="form-line">
+                    @Html.LabelFor(model => model.title)
+                </div>
+                <div class="form-line field">
+                    @Html.EditorFor(model => model.title)
+                    @Html.ValidationMessageFor(model => model.title)
+                </div>
 
-        @Html.HiddenFor(model => model.eventID)
+                <div class="form-line">
+                    @Html.LabelFor(model => model.startDate)
+                </div>
+                <div class="form-line field">
+                    @Html.EditorFor(model => model.startDate)
+                    @Html.ValidationMessageFor(model => model.startDate)
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.title)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.title)
-            @Html.ValidationMessageFor(model => model.title)
-        </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.endDate)
+                </div>
+                <div class="form-line field">
+                    @Html.EditorFor(model => model.endDate)
+                    @Html.ValidationMessageFor(model => model.endDate)
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.startDate)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.startDate)
-            @Html.ValidationMessageFor(model => model.startDate)
-        </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.categoryID, "Category")
+                </div>
+                <div class="form-line field">
+                    @Html.DropDownList("categoryID", String.Empty)
+                    @Html.ValidationMessageFor(model => model.categoryID)
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.endDate)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.endDate)
-            @Html.ValidationMessageFor(model => model.endDate)
-        </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.typeID, "Type")
+                </div>
+                <div class="form-line field">
+                    @Html.DropDownList("typeID", String.Empty)
+                    @Html.ValidationMessageFor(model => model.typeID)
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.categoryID, "Category")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("categoryID", String.Empty)
-            @Html.ValidationMessageFor(model => model.categoryID)
-        </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.eventDescription)
+                </div>
+                <div class="form-line field">
+                    @Html.EditorFor(model => model.eventDescription)
+                    @Html.ValidationMessageFor(model => model.eventDescription)
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.typeID, "Type")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("typeID", String.Empty)
-            @Html.ValidationMessageFor(model => model.typeID)
-        </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.ownerID)
+                </div>
+                <div class="form-line field">
+                    @Html.EditorFor(model => model.ownerID)
+                    @Html.ValidationMessageFor(model => model.ownerID)
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.eventDescription)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.eventDescription)
-            @Html.ValidationMessageFor(model => model.eventDescription)
-        </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.logoPath)
+                </div>
+                <div class="form-line field">
+                    @Html.EditorFor(model => model.logoPath)
+                    @Html.ValidationMessageFor(model => model.logoPath)
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ownerID)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ownerID)
-            @Html.ValidationMessageFor(model => model.ownerID)
-        </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.location)
+                </div>
+                <div class="form-line field">
+                    @Html.EditorFor(model => model.location)
+                    @Html.ValidationMessageFor(model => model.location)
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.logoPath)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.logoPath)
-            @Html.ValidationMessageFor(model => model.logoPath)
-        </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.eventStatus)
+                </div>
+                <div class="form-line field">
+                    @Html.EditorFor(model => model.eventStatus)
+                    @Html.ValidationMessageFor(model => model.eventStatus)
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.location)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.location)
-            @Html.ValidationMessageFor(model => model.location)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.eventStatus)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.eventStatus)
-            @Html.ValidationMessageFor(model => model.eventStatus)
-        </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
+                <input type="submit" value="Save" />
+            </fieldset>
 }
 
 <div>

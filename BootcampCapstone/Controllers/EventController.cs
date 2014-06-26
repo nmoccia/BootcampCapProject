@@ -90,7 +90,7 @@ namespace BootcampCapstone.Controllers
                     break;
             }
 
-            int pageSize = 3;
+            int pageSize = 6;
             int pageNumber = (page ?? 1);
             return View(events.ToPagedList(pageNumber, pageSize));
         }
