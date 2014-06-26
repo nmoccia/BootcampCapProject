@@ -27,16 +27,23 @@ namespace BootcampCapstone.Controllers
         //
         // GET: /Event/
 
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page, string myEvents)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page, string myEvents, string dateFrom, string dateTo)
         {
+
+            // ViewBag initialization every time the page loads
             ViewBag.CurrentSort = sortOrder;
             ViewBag.TitleParam = String.IsNullOrEmpty(sortOrder) ? "Title_desc" : "";
             ViewBag.StartDateParam = sortOrder == "Date" ? "Date_desc" : "Date";
             ViewBag.EndDateParam = sortOrder == "EndDate" ? "EndDate_desc" : "EndDate";
+
+            // Database elements
             var userId = (from i in db.Users.Where(i => i.username == User.Identity.Name) select i.userID).First();
             var registrations = from i in db.Registrations select i;
             var eventIds = registrations.Where(i => i.userID == userId).Select(j => j.eventID).ToList();
+            var events = from s in db.Events select s;
             ViewBag.EventSignedUpList = eventIds;
+            ViewBag.EventOwnerList = events.Where(i => i.ownerID == userId).Select(j => j.eventID).ToList();
+
             if (searchString != null)
             {
                 page = 1;
@@ -48,7 +55,7 @@ namespace BootcampCapstone.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            var events = from s in db.Events select s;
+
             if (myEvents == "true")
                 events = events.Where(i => eventIds.Contains(i.eventID));    
             if (!String.IsNullOrEmpty(searchString))

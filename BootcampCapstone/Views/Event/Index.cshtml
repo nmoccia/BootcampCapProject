@@ -5,11 +5,12 @@
     ViewBag.Title = "Events";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 @if (!String.IsNullOrEmpty(User.Identity.Name)) {
         <div class="sidebar span3">
             <div class="well sidebar-nav">
                 <ul class="nav nav-list">
-                    <li><a href="#">My Events</a></li>
+                    <li>@Html.ActionLink("My Events", "MyEvents", "Event")</li>
                     <li>@Html.ActionLink("Create Event", "Create", "Event")</li>
                     <li class="active">@Html.ActionLink("Find Events", "Index", "Event")</li>
                     <li>@Html.ActionLink("My Account", "MyAccount", "User")</li>
@@ -93,6 +94,12 @@
                     }
                     else {
                         @Html.ActionLink("Withdraw", "Withdraw", new { id = item.eventID});   
+                    }
+                </td>
+                <td>
+                    @if (ViewBag.EventOwnerList.Contains(item.eventID)) 
+                    {
+                        @Html.ActionLink("Edit", "Edit", new {id = item.eventID})
                     }
                 </td>
             </tr>
