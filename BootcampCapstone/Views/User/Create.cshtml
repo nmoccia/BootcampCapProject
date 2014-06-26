@@ -9,9 +9,9 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     <div class="container centered">
-        <div class="form-register">
-            <h2 class="form-register-heading">Register</h2>
-            <fieldset class="form-register-column">
+        <div class="form-generic">
+            <h2 class="form-generic-heading">Register</h2>
+            <fieldset class="form-generic-column">
                 <div class="form-line">
                     @Html.LabelFor(model => model.username)
                 </div>
@@ -88,8 +88,8 @@
                         @Html.ValidationMessageFor(model => model.zip)
                     </div>
                 </div>
-            </fieldset> <!-- form-register-column -->
-            <fieldset class ="form-register-column">
+            </fieldset> <!-- form-generic-column -->
+            <fieldset class ="form-generic-column">
                 <div class="form-line">
                     @Html.LabelFor(model => model.phoneHome)
                 </div>
@@ -155,8 +155,8 @@
                 </div>
                 <input type="submit" value="Submit" class="btn btn-large btn-primary right-spacing-small" />
                 <input type="button" value="Cancel" class="btn btn-large btn-primary" onclick="@("location.href='" + Url.Action("Index", "Home") + "'")" />
-            </fieldset> <!-- form-register-column -->
-        </div> <!-- /form-register -->
+            </fieldset> <!-- form-generic-column -->
+        </div> <!-- /form-generic -->
     </div> <!-- container -->
 }
 

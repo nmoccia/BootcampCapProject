@@ -6,21 +6,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Events</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-@using (Html.BeginForm("Index", "Event", FormMethod.Get))
-{
-    <p>
-        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)  
-        <input type="submit" value="Search" />
-    </p>
-}
-
 <div id="event-table">
+    <h2>Events</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    @using (Html.BeginForm("Index", "Event", FormMethod.Get))
+    {
+        <p>
+            Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new {@class = "no-margin"})  
+            <input type="button" value="Search" class="btn btn-medium btn-primary" />
+        </p>
+    }
+
     From: @Html.TextBox("dateFrom", null, new {@class = "dateField", type = "date"})
     To:   @Html.TextBox("dateTo", null, new {@class = "dateField", type = "date"})
     <table class="table table-stripped">

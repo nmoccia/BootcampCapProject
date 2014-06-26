@@ -9,9 +9,9 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     <div class="container centered">
-        <div class="form-register">
-            <h2 class="form-register-heading">Edit Account Info</h2>
-            <fieldset class="form-register-column">
+        <div class="form-generic">
+            <h2 class="form-generic-heading">Edit Account Info</h2>
+            <fieldset class="form-generic-column">
                 @Html.HiddenFor(model => model.userID)
                 <div class="form-line">
                     @Html.LabelFor(model => model.username)
@@ -88,8 +88,8 @@
                         @Html.ValidationMessageFor(model => model.zip)
                     </div>
                 </div>
-            </fieldset> <!-- form-register-column -->
-            <fieldset class ="form-register-column">
+            </fieldset> <!-- form-generic-column -->
+            <fieldset class ="form-generic-column">
                 <div class="form-line">
                     @Html.LabelFor(model => model.phoneHome)
                 </div>
@@ -154,8 +154,8 @@
                     @Html.ValidationMessageFor(model => model.additionalInfo)
                 </div>
                 <input type="submit" value="Save" class="btn btn-large btn-primary right-spacing-small" />
-            </fieldset> <!-- form-register-column -->
-        </div> <!-- /form-register -->
+            </fieldset> <!-- form-generic-column -->
+        </div> <!-- /form-generic -->
     </div> <!-- container -->
 }
 
