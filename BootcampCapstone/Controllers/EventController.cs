@@ -52,6 +52,8 @@ namespace BootcampCapstone.Controllers
                             || i.eventDescription.ToUpper().Contains(searchString));
             }
 
+            var users = from s in db.Users select s;
+
             switch (sortOrder)
             {
                 case "Title_desc":
@@ -105,6 +107,7 @@ namespace BootcampCapstone.Controllers
         {
             if (ModelState.IsValid)
             {
+                ev.ownerID = db.Users.Where(i => i.username == User.Identity.Name).Select(j => j.userID).FirstOrDefault();
                 db.Events.Add(ev);
                 db.SaveChanges();
                 return RedirectToAction("Index");

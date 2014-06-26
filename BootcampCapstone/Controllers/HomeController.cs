@@ -5,11 +5,16 @@ using System.Web;
 using System.Web.Mvc;
 using BootcampCapstone.Queries;
 using System.Web.Security;
+using System.Net;
+using System.Net.Mail;
 
 namespace BootcampCapstone.Controllers
 {
     public class HomeController : Controller
     {
+
+        private EventManagerEntities db = new EventManagerEntities();
+
         //
         // GET: /Home/
 
@@ -67,6 +72,14 @@ namespace BootcampCapstone.Controllers
         public ActionResult LostPassword(BootcampCapstone.Models.AccountModel.LostPasswordModel lostPassModel)
         {
             string enteredUsername = lostPassModel.UserName;
+            var user = db.Users.FirstOrDefault(i => i.username.ToUpper() == enteredUsername.ToUpper());
+            if (user != null)
+            {
+            }
+            else
+            {
+                ViewBag.Error = "Entered email address is not registered.";
+            }
             return View();
         }
 

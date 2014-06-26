@@ -17,6 +17,7 @@
                 </div>
                 <div class="form-line">
                     @Html.EditorFor(model => model.username)
+                    @ViewBag.EmailError
                 </div>
                 <div class="form-line">
                     @Html.ValidationMessageFor(model => model.username)
@@ -138,7 +139,7 @@
                     @Html.LabelFor(model => model.foodID, "Food")
                 </div>
                 <div class="form-line">
-                    @Html.DropDownList("foodID", String.Empty)
+                    @Html.DropDownList("foodId", String.Empty)
                 </div>
                 <div class="form-line">
                     @Html.ValidationMessageFor(model => model.foodID)

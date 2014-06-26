@@ -60,7 +60,8 @@ namespace BootcampCapstone.Models
         public class LostPasswordModel
         {
             [Required]
-            [Display(Name = "User Name")]
+            [DataType(DataType.EmailAddress)]
+            [Display(Name = "Email")]
             public string UserName { get; set; }
         }
 

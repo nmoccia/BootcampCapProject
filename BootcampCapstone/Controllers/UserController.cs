@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace BootcampCapstone.Controllers
 {
@@ -52,9 +53,21 @@ namespace BootcampCapstone.Controllers
         {            
             if (ModelState.IsValid)
             {
+                var authTicket = new FormsAuthenticationTicket(
+                    1,                             // version
+                    user.username,                      // user name
+                    DateTime.Now,                  // created
+                    DateTime.Now.AddMinutes(10),   // expires
+                    false,                    // persistent?
+                    "Moderator;Admin"                        // can be used to store roles
+                    );
+
+                string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+                var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                System.Web.HttpContext.Current.Response.Cookies.Add(authCookie);
                 db.Users.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Event");
             }
 
             ViewBag.foodID = new SelectList(db.Foods, "foodID", "food1", user.foodID);
