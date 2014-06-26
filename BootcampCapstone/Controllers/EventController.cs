@@ -51,7 +51,8 @@ namespace BootcampCapstone.Controllers
             {
                 events = events.Where(i => i.title.ToUpper().Contains(searchString)
                             || i.location.ToUpper().Contains(searchString)
-                            || i.eventDescription.ToUpper().Contains(searchString));
+                            || i.eventDescription.ToUpper().Contains(searchString)
+                            || i.Type.type1.ToUpper().Contains(searchString));
             }
 
             var users = from s in db.Users select s;
