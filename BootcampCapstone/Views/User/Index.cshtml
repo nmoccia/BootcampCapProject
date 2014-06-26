@@ -4,18 +4,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@if (!String.IsNullOrEmpty(User.Identity.Name)) {
-        <div class="sidebar span3">
-            <div class="well sidebar-nav">
-                <ul class="nav nav-list">
-                    <li><a href="#">My Events</a></li>
-                    <li>@Html.ActionLink("Create Event", "Create", "Event")</li>
-                    <li>@Html.ActionLink("Find Events", "Index", "Event")</li>
-                    <li class="active">@Html.ActionLink("My Account", "MyAccount", "User")</li>
-                </ul> <!-- /.nav -->
-            </div><!--/.well -->
-        </div><!--/span-->
-    }
 <div id="filters">
     <h2>Manage Accounts</h2>
 </div>

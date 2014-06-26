@@ -4,6 +4,9 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
     <div class="container centered">
         <div class="form-generic">
             <h2 class="form-generic-heading">Create Event</h2>
