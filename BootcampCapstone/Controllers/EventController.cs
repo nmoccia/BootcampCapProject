@@ -32,6 +32,7 @@ namespace BootcampCapstone.Controllers
             ViewBag.CurrentSort = sortOrder;
             ViewBag.TitleParam = String.IsNullOrEmpty(sortOrder) ? "Title_desc" : "";
             ViewBag.StartDateParam = sortOrder == "Date" ? "Date_desc" : "Date";
+            ViewBag.EndDateParam = sortOrder == "EndDate" ? "EndDate_desc" : "EndDate";
             var userId = (from i in db.Users.Where(i => i.username == User.Identity.Name) select i.userID).First();
             var registrations = from i in db.Registrations select i;
             var eventIds = registrations.Where(i => i.userID == userId).Select(j => j.eventID).ToList();
@@ -62,6 +63,12 @@ namespace BootcampCapstone.Controllers
 
             switch (sortOrder)
             {
+                case "EndDate":
+                    events = events.OrderBy(s => s.endDate);
+                    break;
+                case "EndDate_desc":
+                    events = events.OrderByDescending(s => s.endDate);
+                    break;
                 case "Title_desc":
                     events = events.OrderByDescending(s => s.title);
                     break;
