@@ -21,6 +21,8 @@
 }
 
 <div id="event-table">
+    From: @Html.TextBox("dateFrom", null, new {@class = "dateField", type = "date"})
+    To:   @Html.TextBox("dateTo", null, new {@class = "dateField", type = "date"})
     <table class="table table-stripped">
         <tr>
             <th>
