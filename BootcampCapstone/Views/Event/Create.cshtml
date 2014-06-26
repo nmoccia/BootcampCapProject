@@ -24,7 +24,7 @@
             
                 </div>
                 <div class="form-line">
-                    @Html.TextBoxFor(model => model.startDate, new { @class = "form-control datepicker", placeholder = "Enter Drop-off date here..." })
+                    @Html.TextBoxFor(model => model.startDate, new {@class = "dateField", type = "date"})
                     @Html.ValidationMessageFor(model => model.startDate)
                 </div>
 
@@ -48,7 +48,8 @@
                     @Html.LabelFor(model => model.logoPath)
                 </div>
                 <div class="form-line">
-                    @Html.EditorFor(model => model.logoPath)
+                    @Html.TextBoxFor(model => model.logoPath, new { @class = "small-tbx" })
+                    <input type="button" value="Browse" class="btn btn-small btn-primary" />
                     @Html.ValidationMessageFor(model => model.logoPath)
                 </div>
             </fieldset> <!-- form-generic-column -->
@@ -65,7 +66,7 @@
                     @Html.LabelFor(model => model.endDate)
                 </div>
                 <div class="form-line">
-                    @Html.EditorFor(model => model.endDate)
+                    @Html.TextBoxFor(model => model.endDate, new {@class = "dateField", type = "date"})
                     @Html.ValidationMessageFor(model => model.endDate)
                 </div>
 
