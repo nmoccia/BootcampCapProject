@@ -10,6 +10,9 @@
     <link href="~/Assets/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="~/Assets/css/styles.css" rel="stylesheet">
     <link href="~/Assets/css/theming.css" rel="stylesheet">
+    @if(!TempData.ContainsKey("CurrentPage")) {
+        TempData.Add("CurrentPage", "FindEvents");
+    }
 </head>
 <body id="main">
     <div id="wrap">
@@ -24,6 +27,62 @@
                 }
             </div>
         </header>
+
+         @if (!String.IsNullOrEmpty(User.Identity.Name)) {
+            switch ((string)TempData["CurrentPage"])
+            {
+                case "MyEvents":
+                    <div class="sidebar span3">
+                    <div class="well sidebar-nav">
+                        <ul class="nav nav-list">
+                            <li class="active">@Html.ActionLink("My Events", "MyEvents", "Event")</li>
+                            <li>@Html.ActionLink("Create Event", "Create", "Event")</li>
+                            <li>@Html.ActionLink("Find Events", "Index", "Event")</li>
+                            <li>@Html.ActionLink("My Account", "MyAccount", "User")</li>
+                        </ul>
+                    </div><!--/.well -->
+                    </div><!--/span-->
+                    break;
+                case "CreateEvent":
+                    <div class="sidebar span3">
+                    <div class="well sidebar-nav">
+                        <ul class="nav nav-list">
+                            <li>@Html.ActionLink("My Events", "MyEvents", "Event")</li>
+                            <li class="active">@Html.ActionLink("Create Event", "Create", "Event")</li>
+                            <li>@Html.ActionLink("Find Events", "Index", "Event")</li>
+                            <li>@Html.ActionLink("My Account", "MyAccount", "User")</li>
+                        </ul>
+                    </div><!--/.well -->
+                    </div><!--/span-->
+                    break;
+                case "MyAccount":
+                    <div class="sidebar span3">
+                    <div class="well sidebar-nav">
+                        <ul class="nav nav-list">
+                            <li>@Html.ActionLink("My Events", "MyEvents", "Event")</li>
+                            <li>@Html.ActionLink("Create Event", "Create", "Event")</li>
+                            <li>@Html.ActionLink("Find Events", "Index", "Event")</li>
+                            <li class="active">@Html.ActionLink("My Account", "MyAccount", "User")</li>
+                        </ul>
+                    </div><!--/.well -->
+                    </div><!--/span-->
+                    break;
+                default:
+                    <div class="sidebar span3">
+                    <div class="well sidebar-nav">
+                        <ul class="nav nav-list">
+                            <li>@Html.ActionLink("My Events", "MyEvents", "Event")</li>
+                            <li>@Html.ActionLink("Create Event", "Create", "Event")</li>
+                            <li class="active">@Html.ActionLink("Find Events", "Index", "Event")</li>
+                            <li>@Html.ActionLink("My Account", "MyAccount", "User")</li>
+                        </ul>
+                    </div><!--/.well -->
+                    </div><!--/span-->
+                    break;
+                    
+                    
+            }
+    }
 
         <!-- the content -->
             @RenderBody()

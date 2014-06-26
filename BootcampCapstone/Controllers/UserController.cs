@@ -25,7 +25,7 @@ namespace BootcampCapstone.Controllers
        [Authorize]
        public ActionResult MyAccount()
        {
-
+           TempData["CurrentPage"] = "MyAccount";
            var userId = db.Users.Where(i => i.username.ToUpper() == User.Identity.Name.ToUpper()).Select(j => j.userID).FirstOrDefault();
 
            return RedirectToAction("Details", new { id = userId });
@@ -98,6 +98,7 @@ namespace BootcampCapstone.Controllers
         [Authorize]
         public ActionResult Edit(int id = 0)
         {
+            TempData["CurrentPage"] = "MyAccount";
             User user = db.Users.Find(id);
             if (user == null)
             {
@@ -130,6 +131,7 @@ namespace BootcampCapstone.Controllers
         [Authorize]
         public ActionResult Delete(int id = 0)
         {
+            TempData["CurrentPage"] = "MyAccount";
             User user = db.Users.Find(id);
             if (user == null)
             {
