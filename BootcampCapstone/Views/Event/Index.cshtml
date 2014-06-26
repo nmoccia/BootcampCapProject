@@ -5,25 +5,33 @@
     ViewBag.Title = "Events";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div id="event-table">
-    <h2>Events</h2>
-
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-
-    @using (Html.BeginForm("Index", "Event", FormMethod.Get))
-    {
-        <p>
-            Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new {@class = "no-margin"})  
-            <input type="button" value="Search" class="btn btn-medium btn-primary" />
-        </p>
+@if (!String.IsNullOrEmpty(User.Identity.Name)) {
+        <div class="sidebar span3">
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li><a href="#">My Events</a></li>
+                    <li>@Html.ActionLink("Create Event", "Create", "Event")</li>
+                    <li class="active">@Html.ActionLink("Find Events", "Index", "Event")</li>
+                    <li>@Html.ActionLink("My Account", "MyAccount", "User")</li>
+                </ul>
+            </div><!--/.well -->
+        </div><!--/span-->
     }
+<div id="event-table">
+    <div id="filters">
+        <h2>Events</h2>
+        @using (Html.BeginForm("Index", "Event", FormMethod.Get))
+        {
+            <p>
+                Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new {@class = "no-margin"})  
+                <input type="submit" value="Search" class="btn btn-medium btn-primary" />
+            </p>
+        }
 
-    From: @Html.TextBox("dateFrom", null, new {@class = "dateField", type = "date"})
-    To:   @Html.TextBox("dateTo", null, new {@class = "dateField", type = "date"})
-    <table class="table table-stripped">
+        From: @Html.TextBox("dateFrom", null, new {@class = "dateField", type = "date"})
+        To:   @Html.TextBox("dateTo", null, new {@class = "dateField", type = "date"})
+    </div>
+    <table class="table table-striped">
         <tr>
             <th>
                 @Html.ActionLink("Title", "Index", new {sortOrder = ViewBag.TitleParam})

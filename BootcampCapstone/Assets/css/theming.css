@@ -90,6 +90,7 @@ body {
     opacity : 0.9;
     z-index: -1;
 }
+/*===================================SIDE NAV BAR====================================*/
 .nav-list > .active > a,
 .nav-list > .active > a:hover,
 .nav-list > .active > a:focus {
@@ -99,4 +100,15 @@ body {
 }
 .well {
     background-color:#fff;
+}
+/*===================================TABLE====================================*/
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: #FFDDCC;
+}
+.table > tbody > tr > th > a {
+    color:#F04139;
+}
+.table > tbody > tr > td > a {
+    color:#F04139;
+    text-decoration:underline;
 }

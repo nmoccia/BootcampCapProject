@@ -8,7 +8,18 @@
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-    
+    if (!String.IsNullOrEmpty(User.Identity.Name)) {
+        <div class="sidebar span3">
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li><a href="#">My Events</a></li>
+                    <li class="active">@Html.ActionLink("Create Event", "Create", "Event")</li>
+                    <li>@Html.ActionLink("Find Events", "Index", "Event")</li>
+                    <li>@Html.ActionLink("My Account", "MyAccount", "User")</li>
+                </ul>
+            </div><!--/.well -->
+        </div><!--/span-->
+    }
     <div class="container centered">
         <div class="form-generic">
             <h2 class="form-generic-heading">Create Event</h2>
