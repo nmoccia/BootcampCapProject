@@ -69,6 +69,7 @@ body {
     opacity : 0.1;
     z-index: -1;
 }
+/*===================================HEADER====================================*/
 #head {
     width:900px;
     height: 175px;
@@ -111,4 +112,7 @@ body {
 .table > tbody > tr > td > a {
     color:#F04139;
     text-decoration:underline;
+}
+.display {
+    border-bottom:1px solid lightsalmon;
 }

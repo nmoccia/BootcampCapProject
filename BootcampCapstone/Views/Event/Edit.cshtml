@@ -7,24 +7,7 @@
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-    if (!String.IsNullOrEmpty(User.Identity.Name)) {
-        <div class="sidebar span3">
-            <div class="well sidebar-nav">
-                <ul class="nav nav-list">
-                    <li>@Html.ActionLink("My Events", "MyEvents", "Event")</li>
-                    <li class="active">@Html.ActionLink("Create Event", "Create", "Event")</li>
-                    <li>@Html.ActionLink("Find Events", "Index", "Event")</li>
-                    <li>@Html.ActionLink("My Account", "MyAccount", "User")</li>
-                </ul> <!-- /.nav -->
-            </div><!--/.well -->
-        </div><!--/span-->
-    }
-<h2>Edit</h2>
-
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
+    <h2>Edit</h2>
     <div class="container centered">
         <div class="form-generic">
             <h2 class="form-generic-heading">Edit Event</h2>
@@ -45,23 +28,7 @@
                     @Html.EditorFor(model => model.startDate)
                     @Html.ValidationMessageFor(model => model.startDate)
                 </div>
-
-                <div class="form-line">
-                    @Html.LabelFor(model => model.endDate)
-                </div>
-                <div class="form-line field">
-                    @Html.EditorFor(model => model.endDate)
-                    @Html.ValidationMessageFor(model => model.endDate)
-                </div>
-
-                <div class="form-line">
-                    @Html.LabelFor(model => model.categoryID, "Category")
-                </div>
-                <div class="form-line field">
-                    @Html.DropDownList("categoryID", String.Empty)
-                    @Html.ValidationMessageFor(model => model.categoryID)
-                </div>
-
+                
                 <div class="form-line">
                     @Html.LabelFor(model => model.typeID, "Type")
                 </div>
@@ -76,6 +43,31 @@
                 <div class="form-line field">
                     @Html.EditorFor(model => model.eventDescription)
                     @Html.ValidationMessageFor(model => model.eventDescription)
+                </div>
+
+                <div class="form-line">
+                    @Html.LabelFor(model => model.eventStatus)
+                </div>
+                <div class="form-line field">
+                    @Html.EditorFor(model => model.eventStatus)
+                    @Html.ValidationMessageFor(model => model.eventStatus)
+                </div>
+            </fieldset><!-- /form-generic-column -->
+            <fieldset class ="form-generic-column">
+                <div class="form-line">
+                    @Html.LabelFor(model => model.categoryID, "Category")
+                </div>
+                <div class="form-line field">
+                    @Html.DropDownList("categoryID", String.Empty)
+                    @Html.ValidationMessageFor(model => model.categoryID)
+                </div>
+
+                <div class="form-line">
+                    @Html.LabelFor(model => model.endDate)
+                </div>
+                <div class="form-line field">
+                    @Html.EditorFor(model => model.endDate)
+                    @Html.ValidationMessageFor(model => model.endDate)
                 </div>
 
                 <div class="form-line">
@@ -101,20 +93,14 @@
                     @Html.EditorFor(model => model.location)
                     @Html.ValidationMessageFor(model => model.location)
                 </div>
-
-                <div class="form-line">
-                    @Html.LabelFor(model => model.eventStatus)
-                </div>
-                <div class="form-line field">
-                    @Html.EditorFor(model => model.eventStatus)
-                    @Html.ValidationMessageFor(model => model.eventStatus)
-                </div>
-
-                <input type="submit" value="Save" />
-            </fieldset>
+                <input type="submit" value="Save" class="btn btn-large btn-primary right-spacing-small"  />
+                <input type="submit" value="Cancel" class="btn btn-large btn-primary" onclick="@("location.href='" + Url.Action("Index", "Event") + "'")" />
+            </fieldset> <!-- form-generic-column -->
+        </div> <!-- /form-generic -->
+    </div> <!-- container -->
 }
 
-<div>
+<div class="hidden">
     @Html.ActionLink("Back to List", "Index")
 </div>
 

@@ -4,7 +4,9 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
     <div class="container centered">
         <div class="form-generic">
             <h2 class="form-generic-heading">Edit Account Info</h2>

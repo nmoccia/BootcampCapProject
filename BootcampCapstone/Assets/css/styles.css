@@ -94,6 +94,12 @@ body {
         min-width:100px;
         min-height:30px;
     }
+    .display {
+        margin: 9px 9px 9px 0px;
+        font-weight:bold;
+        min-width:100px;
+        min-height:30px;
+    }
 .form-line-double-left {
     padding-right:20px;
     display:inline-block;
