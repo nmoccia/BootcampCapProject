@@ -9,6 +9,7 @@ using PagedList;
 
 namespace BootcampCapstone.Controllers
 {
+    [Authorize]
     public class EventController : Controller
     {
 
@@ -26,14 +27,16 @@ namespace BootcampCapstone.Controllers
         //
         // GET: /Event/
 
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page, string myEvents)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.TitleParam = String.IsNullOrEmpty(sortOrder) ? "Title_desc" : "";
             ViewBag.StartDateParam = sortOrder == "Date" ? "Date_desc" : "Date";
+            ViewBag.EndDateParam = sortOrder == "EndDate" ? "EndDate_desc" : "EndDate";
             var userId = (from i in db.Users.Where(i => i.username == User.Identity.Name) select i.userID).First();
             var registrations = from i in db.Registrations select i;
-            ViewBag.EventSignedUpList = registrations.Where(i => i.userID == userId).Select(j => j.eventID).ToList();
+            var eventIds = registrations.Where(i => i.userID == userId).Select(j => j.eventID).ToList();
+            ViewBag.EventSignedUpList = eventIds;
             if (searchString != null)
             {
                 page = 1;
@@ -46,18 +49,26 @@ namespace BootcampCapstone.Controllers
             ViewBag.CurrentFilter = searchString;
 
             var events = from s in db.Events select s;
-
+            if (myEvents == "true")
+                events = events.Where(i => eventIds.Contains(i.eventID));    
             if (!String.IsNullOrEmpty(searchString))
             {
                 events = events.Where(i => i.title.ToUpper().Contains(searchString)
                             || i.location.ToUpper().Contains(searchString)
-                            || i.eventDescription.ToUpper().Contains(searchString));
+                            || i.eventDescription.ToUpper().Contains(searchString)
+                            || i.Type.type1.ToUpper().Contains(searchString));
             }
 
             var users = from s in db.Users select s;
 
             switch (sortOrder)
             {
+                case "EndDate":
+                    events = events.OrderBy(s => s.endDate);
+                    break;
+                case "EndDate_desc":
+                    events = events.OrderByDescending(s => s.endDate);
+                    break;
                 case "Title_desc":
                     events = events.OrderByDescending(s => s.title);
                     break;
@@ -77,6 +88,43 @@ namespace BootcampCapstone.Controllers
             return View(events.ToPagedList(pageNumber, pageSize));
         }
 
+        
+        public ActionResult SignUp(int id = 0)
+        {
+            var registrations = from i in db.Registrations select i;
+            registrations = registrations.Where(i => i.eventID == id);
+            var Users = from i in db.Users select i;
+            int userId = Users.First(i => i.username == User.Identity.Name).userID;
+            if (registrations.Where(i => i.userID == userId).FirstOrDefault() == null)
+            {
+                BootcampCapstone.Registration reg = new Registration();
+                reg.eventID = id;
+                reg.userID = db.Users.First(i => i.username == User.Identity.Name).userID;
+                db.Registrations.Add(reg);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+
+        }
+
+        public ActionResult Withdraw(int id = 0)
+        {
+            var registration = db.Registrations.Where(i => i.eventID == id && i.User.username == User.Identity.Name).FirstOrDefault();
+            if (registration != null)
+            {
+                db.Registrations.Remove(registration);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+            
+
+        }
+
+        public ActionResult MyEvents()
+        {
+            return RedirectToAction("Index", new {myEvents = "true" });
+        }
+        
         //
         // GET: /Event/Details/5
 

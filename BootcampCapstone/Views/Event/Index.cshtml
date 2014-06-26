@@ -40,7 +40,7 @@
                 @Html.ActionLink("Start Date", "Index", new {sortOrder = ViewBag.StartDateParam})
             </th>
             <th>
-                @Html.ActionLink("End Date", "Index")
+                @Html.ActionLink("End Date", "Index", new { sortOrder = ViewBag.EndDateParam})
             </th>
             <th>
                 @Html.ActionLink("Category", "Index")
@@ -89,7 +89,10 @@
                 <td>
                     @if (!ViewBag.EventSignedUpList.Contains(item.eventID))
                     {
-                        @Html.ActionLink("Sign Up", "Index");
+                        @Html.ActionLink("Sign Up", "SignUp", new { id = item.eventID});
+                    }
+                    else {
+                        @Html.ActionLink("Withdraw", "Withdraw", new { id = item.eventID});   
                     }
                 </td>
             </tr>

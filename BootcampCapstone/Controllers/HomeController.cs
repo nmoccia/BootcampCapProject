@@ -22,7 +22,7 @@ namespace BootcampCapstone.Controllers
         {
             if (User.Identity.Name != "")
             {
-                return RedirectToAction("Index", "Event");
+                return RedirectToAction("Index", "Event", new { myEvents = "false" });
             }
             return View();
         }
