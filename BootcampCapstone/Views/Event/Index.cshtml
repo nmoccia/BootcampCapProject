@@ -78,10 +78,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.eventStatus)
                 </td>
-                <td colspan="3">
-                    @Html.ActionLink("Edit", "Edit", new { id=item.eventID }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.eventID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.eventID })
+                <td>
+                    @if (!ViewBag.EventSignedUpList.Contains(item.eventID))
+                    {
+                        @Html.ActionLink("Sign Up", "Index");
+                    }
                 </td>
             </tr>
         }

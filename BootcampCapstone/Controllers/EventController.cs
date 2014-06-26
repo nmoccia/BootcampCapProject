@@ -31,7 +31,9 @@ namespace BootcampCapstone.Controllers
             ViewBag.CurrentSort = sortOrder;
             ViewBag.TitleParam = String.IsNullOrEmpty(sortOrder) ? "Title_desc" : "";
             ViewBag.StartDateParam = sortOrder == "Date" ? "Date_desc" : "Date";
-
+            var userId = (from i in db.Users.Where(i => i.username == User.Identity.Name) select i.userID).First();
+            var registrations = from i in db.Registrations select i;
+            ViewBag.EventSignedUpList = registrations.Where(i => i.userID == userId).Select(j => j.eventID).ToList();
             if (searchString != null)
             {
                 page = 1;
