@@ -60,6 +60,7 @@ body {
     margin-bottom: 10px;
 }
     .form-generic input[type="text"],
+    .form-generic input[type="tel"],
     .form-generic input[type="datetime"],
     .form-generic input[type="email"],
     .form-generic select,
@@ -74,6 +75,7 @@ body {
     max-width:300px;
     vertical-align:top;
     margin:0px 15px 0px 15px;
+    min-width:226px;
 }
 
 .form-line {
@@ -85,6 +87,12 @@ body {
     }
     .form-line textarea {
         max-width:250px;
+    }
+    .field {
+        margin: 9px 9px 9px 0px;
+        font-weight:bold;
+        min-width:100px;
+        min-height:30px;
     }
 .form-line-double-left {
     padding-right:20px;
@@ -161,6 +169,8 @@ body {
 .container .credit {
     margin: 10px 0;
 }
+
+/*Other CSS*/
 #event-table {
     display:inline-block;
 }
@@ -205,4 +215,10 @@ body {
 
 .no-margin {
     margin: 0px 0px 0px 0px !important;
+}
+
+.grower {
+    height:100%;
+    width:100%;
+    vertical-align:bottom;
 }

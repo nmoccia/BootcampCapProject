@@ -4,129 +4,141 @@
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>User</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.username)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.username)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.password)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.password)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.firstName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.firstName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.lastName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.lastName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.address1)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.address1)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.address2)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.address2)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.city)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.city)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.state)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.state)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.zip)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.zip)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.phoneHome)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.phoneHome)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.phoneCell)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.phoneCell)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.phoneOffice)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.phoneOffice)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.companyName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.companyName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.branchLocation)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.branchLocation)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Food.food1)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Food.food1)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.additionalInfo)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.additionalInfo)
-    </div>
-</fieldset>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+@if (!String.IsNullOrEmpty(User.Identity.Name)) {
+    <div class="sidebar span3">
+        <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+                <li>@Html.ActionLink("My Events", "MyEvents", "Event")</li>
+                <li>@Html.ActionLink("Create Event", "Create", "Event")</li>
+                <li>@Html.ActionLink("Find Events", "Index", "Event")</li>
+                <li class="active">@Html.ActionLink("My Account", "MyAccount", "User")</li>
+            </ul>
+        </div><!--/.well -->
+    </div><!--/span-->
 }
+<div class="container centered">
+    <div class="form-generic">
+        <h2 class="form-generic-heading">Are you sure you want to delete?</h2>
+        <fieldset class="form-generic-column">
+            <div class="form-line">
+                @Html.DisplayNameFor(model => model.username)
+            </div>
+            <div class="form-line field">
+                @Html.DisplayFor(model => model.username)
+            </div>
+
+            <div class="form-line">
+                 @Html.DisplayNameFor(model => model.password)
+            </div>
+            <div class="form-line field">
+                @Html.DisplayFor(model => model.password)
+            </div>
+
+            <div class="form-line">
+                 @Html.DisplayNameFor(model => model.firstName)
+            </div>
+            <div class="form-line field">
+                @Html.DisplayFor(model => model.firstName)
+            </div>
+
+            <div class="form-line">
+                 @Html.DisplayNameFor(model => model.lastName)
+            </div>
+            <div class="form-line field">
+                @Html.DisplayFor(model => model.lastName)
+            </div>
+
+            <div class="form-line">
+                 @Html.DisplayNameFor(model => model.address1)
+            </div>
+            <div class="form-line field">
+                @Html.DisplayFor(model => model.address1)
+            </div>
+
+            <div class="form-line">
+                 @Html.DisplayNameFor(model => model.address2)
+            </div>
+            <div class="form-line field">
+                @Html.DisplayFor(model => model.address2)
+            </div>
+
+            <div class="form-line">
+                 @Html.DisplayNameFor(model => model.city)
+            </div>
+            <div class="form-line field">
+                @Html.DisplayFor(model => model.city)
+            </div>
+            <div class="form-line">
+                <div class="form-line-double-left">
+                     @Html.DisplayNameFor(model => model.state)
+                    <div class="field">
+                        @Html.DisplayFor(model => model.state)
+                    </div>
+                </div>
+                <div class="form-line-double-right">
+                    @Html.DisplayNameFor(model => model.zip)
+                    <div class="field">
+                        @Html.DisplayFor(model => model.zip)
+                    </div>
+                </div>
+            </div>
+        </fieldset> <!-- form-generic-column -->
+        <fieldset class ="form-generic-column">
+            <div class="form-line">
+                 @Html.DisplayNameFor(model => model.phoneHome)
+            </div>
+            <div class="form-line field">
+                @Html.DisplayFor(model => model.phoneHome)
+            </div>
+
+            <div class="form-line">
+                 @Html.DisplayNameFor(model => model.phoneCell)
+            </div>
+            <div class="form-line field">
+                @Html.DisplayFor(model => model.phoneCell)
+            </div>
+
+            <div class="form-line">
+                 @Html.DisplayNameFor(model => model.phoneOffice)
+            </div>
+            <div class="form-line field">
+                @Html.DisplayFor(model => model.phoneOffice)
+            </div>
+
+            <div class="form-line">
+                 @Html.DisplayNameFor(model => model.companyName)
+            </div>
+            <div class="form-line field">
+                @Html.DisplayFor(model => model.companyName)
+            </div>
+
+            <div class="form-line">
+                 @Html.DisplayNameFor(model => model.branchLocation)
+            </div>
+            <div class="form-line field">
+                @Html.DisplayFor(model => model.branchLocation)
+            </div>
+
+            <div class="form-line">
+                 @Html.DisplayNameFor(model => model.Food.food1)
+            </div>
+            <div class="form-line field">
+                @Html.DisplayFor(model => model.Food.food1)
+            </div>
+
+            <div class="form-line">
+                 @Html.DisplayNameFor(model => model.additionalInfo)
+            </div>
+            <div class="form-line field">
+                @Html.DisplayFor(model => model.additionalInfo)
+            </div>
+            <div class="grower">
+                @using (Html.BeginForm()) {
+                    @Html.AntiForgeryToken()
+                    <input type="button" value="Delete" class="btn btn-large btn-primary" />
+                }
+            </div>
+        </fieldset> <!-- form-generic-column -->
+    </div> <!-- /form-generic -->
+</div> <!-- container -->
+
