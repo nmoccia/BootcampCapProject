@@ -17,10 +17,10 @@
     {
         <p>
             Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new {@class = "no-margin"})  
-            <input type="button" value="Search" class="btn btn-medium btn-primary" />
+            <input type="submit" value="Search" class="btn btn-medium btn-primary" />
         </p>
     }
-
+    
     From: @Html.TextBox("dateFrom", null, new {@class = "dateField", type = "date"})
     To:   @Html.TextBox("dateTo", null, new {@class = "dateField", type = "date"})
     <table class="table table-stripped">
@@ -85,6 +85,12 @@
                     }
                     else {
                         @Html.ActionLink("Withdraw", "Withdraw", new { id = item.eventID});   
+                    }
+                </td>
+                <td>
+                    @if (ViewBag.EventOwnerList.Contains(item.eventID)) 
+                    {
+                        @Html.ActionLink("Edit", "Edit", new {id = item.eventID})
                     }
                 </td>
             </tr>
