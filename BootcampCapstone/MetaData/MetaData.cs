@@ -83,15 +83,18 @@ namespace BootcampCapstone
 
         public int eventID;
         [Display(Name = "Title")]
+        [Required]
         public string title;
 
         [Display(Name = "Start Date")]
         [DataType(DataType.DateTime, ErrorMessage = "Please enter a valid date in the format dd/mm/yyyy hh:mm")]
-        public Nullable<System.DateTime> startDate;
+        [Required]
+        public DateTime startDate;
 
         [Display(Name = "End Date")]
         [DataType(DataType.DateTime, ErrorMessage = "Please enter a valid date in the format dd/mm/yyyy hh:mm")]
-        public Nullable<System.DateTime> endDate;
+        [Required]
+        public DateTime endDate;
 
         public Nullable<int> categoryID;
         public Nullable<int> typeID;

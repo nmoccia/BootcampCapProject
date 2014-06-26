@@ -13,12 +13,11 @@
         {
             <p>
                 Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new {@class = "no-margin"})  
+                From: @Html.TextBox("DateFrom", ViewBag.DateFrom as string, new {@class = "dateField", type = "date"})
+                To:   @Html.TextBox("DateTo", ViewBag.DateTo as string, new {@class = "dateField", type = "date"})
                 <input type="submit" value="Search" class="btn btn-medium btn-primary" />
             </p>
         }
-
-        From: @Html.TextBox("dateFrom", null, new {@class = "dateField", type = "date"})
-        To:   @Html.TextBox("dateTo", null, new {@class = "dateField", type = "date"})
     </div>
     <table class="table table-striped">
         <tr>

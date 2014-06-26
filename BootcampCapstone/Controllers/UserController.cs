@@ -120,7 +120,7 @@ namespace BootcampCapstone.Controllers
             {
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new {id = user.userID });
             }
             ViewBag.foodID = new SelectList(db.Foods, "foodID", "food1", user.foodID);
             return View(user);

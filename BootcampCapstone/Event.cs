@@ -21,8 +21,8 @@ namespace BootcampCapstone
     
         public int eventID { get; set; }
         public string title { get; set; }
-        public Nullable<System.DateTime> startDate { get; set; }
-        public Nullable<System.DateTime> endDate { get; set; }
+        public DateTime startDate { get; set; }
+        public DateTime endDate { get; set; }
         public Nullable<int> categoryID { get; set; }
         public Nullable<int> typeID { get; set; }
         public string eventDescription { get; set; }
