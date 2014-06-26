@@ -81,7 +81,10 @@
                 <td>
                     @if (!ViewBag.EventSignedUpList.Contains(item.eventID))
                     {
-                        @Html.ActionLink("Sign Up", "Index");
+                        @Html.ActionLink("Sign Up", "SignUp", new { id = item.eventID});
+                    }
+                    else {
+                        @Html.ActionLink("Withdraw", "Withdraw", new { id = item.eventID});   
                     }
                 </td>
             </tr>

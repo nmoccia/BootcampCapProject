@@ -9,6 +9,7 @@ using PagedList;
 
 namespace BootcampCapstone.Controllers
 {
+    [Authorize]
     public class EventController : Controller
     {
 
@@ -77,6 +78,38 @@ namespace BootcampCapstone.Controllers
             return View(events.ToPagedList(pageNumber, pageSize));
         }
 
+        
+        public ActionResult SignUp(int id = 0)
+        {
+            var registrations = from i in db.Registrations select i;
+            registrations = registrations.Where(i => i.eventID == id);
+            var Users = from i in db.Users select i;
+            int userId = Users.First(i => i.username == User.Identity.Name).userID;
+            if (registrations.Where(i => i.userID == userId).FirstOrDefault() == null)
+            {
+                BootcampCapstone.Registration reg = new Registration();
+                reg.eventID = id;
+                reg.userID = db.Users.First(i => i.username == User.Identity.Name).userID;
+                db.Registrations.Add(reg);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+
+        }
+
+        public ActionResult Withdraw(int id = 0)
+        {
+            var registration = db.Registrations.Where(i => i.eventID == id && i.User.username == User.Identity.Name).FirstOrDefault();
+            if (registration != null)
+            {
+                db.Registrations.Remove(registration);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+            
+
+        }
+        
         //
         // GET: /Event/Details/5
 
