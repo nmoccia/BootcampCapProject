@@ -85,6 +85,13 @@
                     @Html.EditorFor(model => model.eventStatus)
                     @Html.ValidationMessageFor(model => model.eventStatus)
                 </div>
+                <div class="form-line">
+                    @Html.LabelFor(model => model.additionalInfo)
+                </div>
+                <div class="form-line">
+                    @Html.EditorFor(model => model.additionalInfo)
+                    @Html.ValidationMessageFor(model => model.additionalInfo)
+                </div>
 
                 <input type="submit" value="Create"class="btn btn-large btn-primary top-spacing-small" />
             </fieldset> <!-- form-generic-column -->

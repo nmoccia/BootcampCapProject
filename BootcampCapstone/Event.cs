@@ -30,7 +30,8 @@ namespace BootcampCapstone
         public string logoPath { get; set; }
         public string location { get; set; }
         public string eventStatus { get; set; }
-    
+        public string additionalInfo { get; set; }
+
         public virtual Category Category { get; set; }
         public virtual Type Type { get; set; }
         public virtual ICollection<Registration> Registrations { get; set; }

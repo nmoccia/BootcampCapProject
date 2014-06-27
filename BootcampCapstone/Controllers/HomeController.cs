@@ -38,10 +38,8 @@ namespace BootcampCapstone.Controllers
             switch (r)
             {
                 case UserQueries.VerificationResult.UserNameDoesNotExist:
-                    ViewBag.Error = "Username does not exist";
-                    break;
                 case UserQueries.VerificationResult.PasswordIncorrect:
-                    ViewBag.Error = "Password is incorrect";
+                    ViewBag.Error = "Either password or username is incorrect.";
                     break;
                 case UserQueries.VerificationResult.Correct:
 
