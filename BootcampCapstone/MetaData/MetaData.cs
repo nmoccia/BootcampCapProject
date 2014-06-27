@@ -70,7 +70,7 @@ namespace BootcampCapstone
         [Display(Name = "Branch Location")]
         public string branchLocation;
 
-        [Required]
+        
         [Display(Name = "Food Preference")]
         public Nullable<int> foodID;
 
