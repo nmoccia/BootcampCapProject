@@ -144,14 +144,21 @@ namespace BootcampCapstone.Controllers
         // POST: /User/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
+            Response.Cookies.Clear();
+            FormsAuthentication.SignOut();
+            HttpCookie c = new HttpCookie(User.Identity.Name);
+            c.Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies.Add(c);
+
+            Session.Clear();
+
             User user = db.Users.Find(id);
             db.Users.Remove(user);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         protected override void Dispose(bool disposing)
