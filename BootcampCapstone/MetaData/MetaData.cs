@@ -111,6 +111,9 @@ namespace BootcampCapstone
 
         [Display(Name = "Event Status")]
         public string eventStatus;
+
+        [Display(Name = "Additional Information")]
+        public string additionalInfo;
     }
     
 }

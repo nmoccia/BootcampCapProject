@@ -20,6 +20,9 @@
                     @Html.PasswordFor(m => m.Password, new { @class = "input-block-level", @placeholder = "Password"})
                     @Html.ValidationMessageFor(m => m.Password)
                 </dt>
+                <div>
+                    @ViewBag.Error
+                </div>
                 <dt>
                     @Html.CheckBoxFor(m => m.RememberMe, new { @class = "remember-me-cbx" })
                     @Html.LabelFor(m => m.RememberMe, new { @class = "remember-me-lbl" })

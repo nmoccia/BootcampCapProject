@@ -136,34 +136,6 @@ namespace BootcampCapstone.Controllers
 
         }
 
-        /*
-        
-        public string MakeDateFormat(string s)
-        {
-            string year = s.Substring(6, 4);
-            string month = s.Substring(0, 2);
-            string day = s.Substring(3, 2);
-            return String.Format("{0}-{1}-{2}",year,month,day);
-        }
-        
-        public int StringDateCompare(string d1, string d2)
-        {
-            int i1, i2;
-            i1 = Convert.ToInt32(d1.Substring(0, 4));
-            i2 = Convert.ToInt32(d2.Substring(0, 4));
-            if(i1 != i2)
-                return i1 > i2 ? 1 : -1;
-            i1 = Convert.ToInt32(d1.Substring(5,2));
-            i2 = Convert.ToInt32(d2.Substring(5,2));
-            if (i1 != i2)
-                return i1 > i2 ? 1 : -1;
-            i1 = Convert.ToInt32(d1.Substring(8, 2));
-            i2 = Convert.ToInt32(d2.Substring(8, 2));
-            if (i1 != i2)
-                return i1 > i2 ? 1 : -1;
-            return 0;
-        }
-        */
         public ActionResult Withdraw(int id = 0)
         {
             var registration = db.Registrations.Where(i => i.eventID == id && i.User.username == User.Identity.Name).FirstOrDefault();
@@ -231,6 +203,11 @@ namespace BootcampCapstone.Controllers
 
         public ActionResult Edit(int id = 0)
         {
+
+            var userId = db.Users.First(i => i.username == User.Identity.Name).userID;
+            if (db.Events.Find(id).ownerID != userId)
+                return RedirectToAction("Index");
+
             Event ev = db.Events.Find(id);
             if (ev == null)
             {
@@ -264,6 +241,10 @@ namespace BootcampCapstone.Controllers
 
         public ActionResult Delete(int id = 0)
         {
+            var userId = db.Users.First(i => i.username == User.Identity.Name).userID;
+            if (db.Events.Find(id).ownerID != userId)
+                return RedirectToAction("Index");
+
             Event ev = db.Events.Find(id);
             if (ev == null)
             {
