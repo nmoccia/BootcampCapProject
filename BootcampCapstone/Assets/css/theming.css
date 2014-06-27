@@ -39,14 +39,6 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
 }
 
 /*================================SET BACKGROUND THEMING===================================*/
-body {
-    /*background-image:url("../../img/world-dotted.jpg");
-    background-repeat:no-repeat;
-    background-attachment:fixed;
-    background-position:center;
-    background-size:cover;*/
-    /*background-color:rgba(1,1,1,0.5);*/
-}
 #main {
    position: relative;
 }
@@ -83,7 +75,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url("../../img/sogeti-logo-rounded.png");
+    background-image: url("../../img/sogeti-logo-rounded2.png");
     background-repeat:no-repeat;
     background-size:contain;
     width: 100%;
